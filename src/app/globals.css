@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf8f5;
+  --foreground: #2c2c2c;
+  --accent: #b8967a;
+  --accent-dark: #9a7a62;
+  --gold: #d4af37;
+  --cream: #f5f0e8;
+  --sage: #8b9a7d;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-gold: var(--gold);
+  --color-cream: var(--cream);
+  --color-sage: var(--sage);
+  --font-display: var(--font-cormorant);
+  --font-body: var(--font-montserrat);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.font-body {
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+}
+
+/* Decorative divider */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    transparent
+  );
+}
+
+/* Animated background pattern */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+    opacity: 0.5;
+  }
+}
+
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Button hover effect */
+.btn-reserve {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-reserve::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-reserve:hover::before {
+  left: 100%;
+}
