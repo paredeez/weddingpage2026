@@ -1,6 +1,25 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import Image from "next/image";
+
+const images = [
+  "/images/IMG_1247.jpeg",
+  "/images/IMG_9581.jpeg",
+  "/images/IMG_1333.jpeg",
+];
+
 export default function Home() {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const imageCount = images.length; // 3 images
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % imageCount);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   const reservationLink =
     "https://www.marriott.com/event-reservations/reservation-link.mi?id=1768277720060&key=GRP&app=resvlink&fbclid=IwY2xjawPVt3VleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAEwAAEen42QAJrQR5CShOCNRqMmJ6gVPSEnRBhebOh7YzNcjXK5agCQWmUfWMmAQlo_aem_EBLdJOXgyw5YiqqqwxF5UQ&_branch_match_id=1406406953040176418&_branch_referrer=H4sIAAAAAAAAAxWPy1KDMABF%2F4ZlwSigzjCdwIAWpZB0SosbBtLwKiEQoqFd%2BO3i7p45m3MbKcf5VdeLcdywQoiWS7khnOmCzn07XLercNb98w9aVZK%2BvTg7lYGlK1SSyse0p%2B%2F4G4KgL9FuiZB7JwPuXBYoEryMX9BXEPp0eAIIhgJh0zs0sbfHU8RCq06Tgz9gt6Fl3NjZfU%2B684dZ1B46sWN1ihhEPc8LynLf%2FbyE8bm%2BKTNrp2lSS2Aekba2PNjWM7BtGxiGZWhXenPecKL9ClrR9c1Q56XgaqbC8RrBGf0DPiHRQvAAAAA%3D";
 
@@ -8,34 +27,20 @@ export default function Home() {
     <div className="relative min-h-screen overflow-hidden bg-white">
       {/* Letter opening animation overlay */}
       <div className="letter-container pointer-events-none fixed inset-0 z-50">
-        {/* Left panel */}
         <div className="letter-left absolute left-0 top-0 h-full w-1/2 bg-white shadow-[4px_0_30px_rgba(0,0,0,0.1)]">
-          {/* Decorative inner edge */}
           <div className="absolute right-0 top-0 h-full w-px bg-gradient-to-b from-transparent via-[#e0e0e0] to-transparent" />
-          {/* Subtle emboss pattern */}
           <div className="absolute inset-0 flex items-center justify-end pr-12 opacity-20">
-            <svg
-              className="h-32 w-32 text-[#d0d0d0]"
-              viewBox="0 0 100 100"
-              fill="none"
-            >
+            <svg className="h-32 w-32 text-[#d0d0d0]" viewBox="0 0 100 100" fill="none">
               <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="0.5" />
               <circle cx="50" cy="50" r="30" stroke="currentColor" strokeWidth="0.5" />
               <circle cx="50" cy="50" r="20" stroke="currentColor" strokeWidth="0.5" />
             </svg>
           </div>
         </div>
-        {/* Right panel */}
         <div className="letter-right absolute right-0 top-0 h-full w-1/2 bg-white shadow-[-4px_0_30px_rgba(0,0,0,0.1)]">
-          {/* Decorative inner edge */}
           <div className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-transparent via-[#e0e0e0] to-transparent" />
-          {/* Subtle emboss pattern */}
           <div className="absolute inset-0 flex items-center justify-start pl-12 opacity-20">
-            <svg
-              className="h-32 w-32 text-[#d0d0d0]"
-              viewBox="0 0 100 100"
-              fill="none"
-            >
+            <svg className="h-32 w-32 text-[#d0d0d0]" viewBox="0 0 100 100" fill="none">
               <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="0.5" />
               <circle cx="50" cy="50" r="30" stroke="currentColor" strokeWidth="0.5" />
               <circle cx="50" cy="50" r="20" stroke="currentColor" strokeWidth="0.5" />
@@ -46,70 +51,102 @@ export default function Home() {
 
       {/* Subtle background elements */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Top decorative circle */}
-        <div className="animate-pulse-subtle absolute -right-32 -top-32 h-96 w-96 rounded-full bg-gradient-to-br from-[#f5f5f5] to-transparent" />
-        {/* Bottom decorative circle */}
-        <div
-          className="animate-pulse-subtle absolute -bottom-48 -left-48 h-[500px] w-[500px] rounded-full bg-gradient-to-tr from-[#fafafa] to-transparent"
-          style={{ animationDelay: "2s" }}
-        />
-        {/* Center subtle glow */}
+        {/* Soft gradient orbs */}
+        <div className="animate-pulse-subtle absolute -right-32 -top-32 h-96 w-96 rounded-full bg-gradient-to-br from-[#f0f0f0] to-transparent" />
+        <div className="animate-pulse-subtle absolute -bottom-48 -left-48 h-[500px] w-[500px] rounded-full bg-gradient-to-tr from-[#f5f5f5] to-transparent" style={{ animationDelay: "2s" }} />
         <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-radial from-[#f8f8f8] via-transparent to-transparent opacity-60" />
+        
+        {/* Decorative corner flourishes */}
+        <svg className="absolute left-6 top-6 h-24 w-24 text-[#e8e8e8]" viewBox="0 0 100 100" fill="none">
+          <path d="M0 50 Q0 0, 50 0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+          <path d="M0 70 Q0 0, 70 0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+          <circle cx="10" cy="10" r="2" fill="currentColor" />
+        </svg>
+        <svg className="absolute right-6 top-6 h-24 w-24 rotate-90 text-[#e8e8e8]" viewBox="0 0 100 100" fill="none">
+          <path d="M0 50 Q0 0, 50 0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+          <path d="M0 70 Q0 0, 70 0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+          <circle cx="10" cy="10" r="2" fill="currentColor" />
+        </svg>
+        <svg className="absolute bottom-6 left-6 h-24 w-24 -rotate-90 text-[#e8e8e8]" viewBox="0 0 100 100" fill="none">
+          <path d="M0 50 Q0 0, 50 0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+          <path d="M0 70 Q0 0, 70 0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+          <circle cx="10" cy="10" r="2" fill="currentColor" />
+        </svg>
+        <svg className="absolute bottom-6 right-6 h-24 w-24 rotate-180 text-[#e8e8e8]" viewBox="0 0 100 100" fill="none">
+          <path d="M0 50 Q0 0, 50 0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+          <path d="M0 70 Q0 0, 70 0" stroke="currentColor" strokeWidth="0.5" fill="none" />
+          <circle cx="10" cy="10" r="2" fill="currentColor" />
+        </svg>
+
+        {/* Subtle diagonal lines pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 30px,
+              #000 30px,
+              #000 31px
+            )`
+          }}
+        />
+
+        {/* Soft center vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(245,245,245,0.5)_70%,rgba(240,240,240,0.8)_100%)]" />
       </div>
 
       {/* Main content */}
-      <main className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-16">
-        <div className="w-full max-w-2xl text-center">
-          {/* Wedding rings icon */}
-          <div className="animate-hidden animate-fade-in delay-[1800ms] mb-10 flex justify-center">
-            <svg
-              className="animate-float h-14 w-14 text-[#1a1a1a]"
-              viewBox="0 0 100 100"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{ animationDelay: "2s" }}
-            >
-              <circle
-                cx="35"
-                cy="50"
-                r="18"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                fill="none"
-              />
-              <circle
-                cx="65"
-                cy="50"
-                r="18"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                fill="none"
-              />
-            </svg>
+      <main className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-12">
+        <div className="w-full max-w-4xl text-center">
+          
+          {/* Photo Slideshow - Main Focus */}
+          <div className="animate-hidden animate-fade-in delay-[1800ms] relative mx-auto mb-8 aspect-[4/5] w-full max-w-[220px] overflow-hidden border-[6px] border-double border-black/80 shadow-[0_20px_50px_rgba(0,0,0,0.15),0_8px_20px_rgba(0,0,0,0.1)]">
+            
+            {/* Images with crossfade */}
+            {images.map((src, index) => (
+              <div
+                key={src}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  index === currentImage ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <Image
+                  src={src}
+                  alt={`Georgia and James - Photo ${index + 1}`}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                />
+              </div>
+            ))}
+
+            {/* Subtle vignette overlay */}
+            <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/20 via-transparent to-black/5" />
           </div>
 
-          {/* Names */}
-          <h1 className="animate-hidden animate-slide-left delay-[2000ms] font-display text-6xl font-light italic tracking-wide text-[#1a1a1a] sm:text-7xl md:text-8xl">
-            Giorgia
-          </h1>
-          <div className="animate-hidden animate-scale-in delay-[2200ms] my-4 flex items-center justify-center">
-            <span className="font-display text-3xl font-light text-[#c0c0c0]">
-              &
-            </span>
+          {/* Names - Below Photos */}
+          <div className="animate-hidden animate-fade-in-up delay-[2200ms] mb-6">
+            <h1 className="font-display text-5xl font-light italic tracking-wider text-[#1a1a1a] sm:text-6xl md:text-7xl">
+              Georgia
+            </h1>
+            <div className="my-2 flex items-center justify-center">
+              <span className="font-display text-2xl font-light text-[#c0c0c0]">&</span>
+            </div>
+            <h1 className="font-display text-5xl font-light italic tracking-wider text-[#1a1a1a] sm:text-6xl md:text-7xl">
+              James
+            </h1>
           </div>
-          <h1 className="animate-hidden animate-slide-right delay-[2000ms] font-display text-6xl font-light italic tracking-wide text-[#1a1a1a] sm:text-7xl md:text-8xl">
-            James
-          </h1>
 
-          {/* Date divider */}
-          <div className="animate-hidden animate-fade-in delay-[2400ms] divider mt-12 mb-14">
+          {/* Date */}
+          <div className="animate-hidden animate-fade-in delay-[2400ms] divider mt-6 mb-12">
             <span className="font-body text-xs font-medium uppercase tracking-[0.4em] text-[#6b6b6b]">
               17th October 2026
             </span>
           </div>
 
           {/* Accommodation section */}
-          <div className="animate-hidden animate-fade-in-up delay-[2500ms] rounded-sm border border-[#e5e5e5] bg-[#fafafa]/50 p-8 shadow-[0_4px_40px_rgba(0,0,0,0.03)] backdrop-blur-sm sm:p-12">
+          <div className="animate-hidden animate-fade-in-up delay-[2600ms] rounded-sm border border-[#e5e5e5] bg-[#fafafa]/50 p-8 shadow-[0_4px_40px_rgba(0,0,0,0.03)] backdrop-blur-sm sm:p-12">
             <h2 className="font-display text-3xl font-normal tracking-wide text-[#1a1a1a] sm:text-4xl">
               Stay with Us
             </h2>
@@ -183,7 +220,7 @@ export default function Home() {
               >
                 <span>Reserve Your Room</span>
                 <svg
-                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                  className="h-3.5 w-3.5 transition-transform duration-300"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
