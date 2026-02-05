@@ -101,7 +101,10 @@ export default function Home() {
         <div className="w-full max-w-4xl text-center">
           
           {/* Photo Slideshow - Main Focus */}
-          <div className="animate-hidden animate-fade-in delay-[1800ms] relative mx-auto mb-8 aspect-[4/5] w-full max-w-[220px] overflow-hidden border-[6px] border-double border-black/80 shadow-[0_20px_50px_rgba(0,0,0,0.15),0_8px_20px_rgba(0,0,0,0.1)]">
+          <div 
+            className="animate-hidden animate-fade-in relative mx-auto mb-8 aspect-[4/5] w-full max-w-[220px] overflow-hidden border-[6px] border-double border-black/80 shadow-[0_20px_50px_rgba(0,0,0,0.15),0_8px_20px_rgba(0,0,0,0.1)]"
+            style={{ animationDelay: "1.7s" }}
+          >
             
             {/* Images with crossfade */}
             {images.map((src, index) => (
@@ -113,7 +116,7 @@ export default function Home() {
               >
                 <Image
                   src={src}
-                  alt={`Georgia and James - Photo ${index + 1}`}
+                  alt={`Giorgia and James - Photo ${index + 1}`}
                   fill
                   className="object-cover"
                   priority={index === 0}
@@ -126,27 +129,42 @@ export default function Home() {
           </div>
 
           {/* Names - Below Photos */}
-          <div className="animate-hidden animate-fade-in-up delay-[2200ms] mb-6">
-            <h1 className="font-display text-5xl font-light italic tracking-wider text-[#1a1a1a] sm:text-6xl md:text-7xl">
-              Georgia
+          <div className="mb-6">
+            <h1 
+              className="animate-hidden animate-slide-from-left font-display text-5xl font-light italic tracking-wider text-[#1a1a1a] sm:text-6xl md:text-7xl"
+              style={{ animationDelay: "1.7s" }}
+            >
+              Giorgia
             </h1>
             <div className="my-2 flex items-center justify-center">
-              <span className="font-display text-2xl font-light text-[#c0c0c0]">&</span>
+              <span 
+                className="animate-hidden animate-pop-in font-display text-2xl font-light text-[#c0c0c0]"
+                style={{ animationDelay: "1.7s" }}
+              >&</span>
             </div>
-            <h1 className="font-display text-5xl font-light italic tracking-wider text-[#1a1a1a] sm:text-6xl md:text-7xl">
+            <h1 
+              className="animate-hidden animate-slide-from-right font-display text-5xl font-light italic tracking-wider text-[#1a1a1a] sm:text-6xl md:text-7xl"
+              style={{ animationDelay: "1.7s" }}
+            >
               James
             </h1>
           </div>
 
           {/* Date */}
-          <div className="animate-hidden animate-fade-in delay-[2400ms] divider mt-6 mb-12">
+          <div 
+            className="animate-hidden animate-pop-in divider mt-6 mb-12"
+            style={{ animationDelay: "1.7s" }}
+          >
             <span className="font-body text-xs font-medium uppercase tracking-[0.4em] text-[#6b6b6b]">
               17th October 2026
             </span>
           </div>
 
           {/* Accommodation section */}
-          <div className="animate-hidden animate-fade-in-up delay-[2600ms] rounded-sm border border-[#e5e5e5] bg-[#fafafa]/50 p-8 shadow-[0_4px_40px_rgba(0,0,0,0.03)] backdrop-blur-sm sm:p-12">
+          <div 
+            className="animate-hidden animate-pop-in rounded-sm border border-[#e5e5e5] bg-[#fafafa]/50 p-8 shadow-[0_4px_40px_rgba(0,0,0,0.03)] backdrop-blur-sm sm:p-12"
+            style={{ animationDelay: "1.7s" }}
+          >
             <h2 className="font-display text-3xl font-normal tracking-wide text-[#1a1a1a] sm:text-4xl">
               Stay with Us
             </h2>
@@ -237,12 +255,18 @@ export default function Home() {
           </div>
 
           {/* Closing message */}
-          <p className="animate-hidden animate-fade-in delay-[2800ms] mt-14 font-display text-xl font-light italic text-[#9a9a9a]">
+          <p 
+            className="animate-hidden animate-pop-in mt-14 font-display text-xl font-light italic text-[#9a9a9a]"
+            style={{ animationDelay: "1.7s" }}
+          >
             We look forward to sharing this unforgettable day with you.
           </p>
 
           {/* Footer flourish */}
-          <div className="animate-hidden animate-fade-in delay-[2800ms] mt-10 flex justify-center">
+          <div 
+            className="animate-hidden animate-pop-in mt-10 flex justify-center"
+            style={{ animationDelay: "1.7s" }}
+          >
             <svg
               className="h-6 w-20 text-[#d4d4d4]"
               viewBox="0 0 100 30"
